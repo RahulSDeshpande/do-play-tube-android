@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.source.remote
+package com.rahulografy.yapodyt.data.source.remote.youtune.videos.service
 
 import com.rahulografy.yapodyt.data.model.YoutubeApiResponse
 import com.rahulografy.yapodyt.util.Constants.Network.Key.YT_API_KEY
@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface YoutubeRemoteService {
+interface YoutubeApiService {
 
     @GET("youtube/v3/videos")
     suspend fun getMostPopularVideos(
