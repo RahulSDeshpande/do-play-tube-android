@@ -1,3 +1,39 @@
 <resources>
+
     <string name="app_name">yapod YT</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="msg_fetching_data_please_wait">Data is being fetched, please wait…</string>
+    <string name="msg_no_internet">Your device is offline.\nPlease connect to the internet.</string>
+    <string name="msg_yes_internet">Your device is now online.</string>
+    <string name="msg_yes_internet_and_sync_posts">Your device is now online.\nSyncing the updated posts with the server.</string>
+    <string name="msg_no_data">No data found. Please pull to refresh.</string>
+    <string name="msg_no_internet_1">Oops, no active internet connection.</string>
+    <string name="msg_airplane_mode_is_turned_on">You have turned on the airplane mode.</string>
+
+    <string name="settings">Settings</string>
+
+    <!-- 'Lorem ipsum..' Placeholders -->
+    <string name="lorem_ipsum_tiny">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+    <string name="lorem_ipsum_small">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</string>
+
+    <string name="lorem_ipsum_medium">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisiut aliquip ex ea commodo consequat.</string>
+
+    <string name="lorem_ipsum_large">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisiut aliquip ex ea commodo consequat.\nDuis aute
+        irure dolor inreprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident,
+        sunt inculpa qui officia deserunt mollit anim id est laborum.</string>
+
 </resources>
