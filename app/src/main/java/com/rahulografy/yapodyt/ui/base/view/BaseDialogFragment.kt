@@ -19,11 +19,9 @@ import com.rahulografy.yapodyt.util.ext.isAppOnline
 abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
     DialogFragment() {
 
-    protected lateinit var viewDataBinding: VDB
+    protected lateinit var vdb: VDB
 
-    protected abstract val viewModel: BVM
-
-    abstract val bindingVariable: Int
+    protected abstract val vm: BVM
 
     @get:LayoutRes
     protected abstract val layoutRes: Int
@@ -39,7 +37,7 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding =
+        vdb =
             DataBindingUtil
                 .inflate(
                     inflater,
@@ -47,22 +45,18 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
                     container,
                     false
                 )
-        return viewDataBinding.root
+        return vdb.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewDataBinding.apply {
-            setVariable(
-                bindingVariable,
-                viewModel
-            )
+        vdb.apply {
             lifecycleOwner = this@BaseDialogFragment
             executePendingBindings()
         }
 
-        viewModel.start()
+        vm.start()
 
         initToolBar()
 
@@ -93,7 +87,7 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
     open fun initObservers() {}
 
     override fun onDestroyView() {
-        viewModel.stop()
+        vm.stop()
         super.onDestroyView()
     }
 

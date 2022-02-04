@@ -15,11 +15,9 @@ import org.imaginativeworld.oopsnointernet.NoInternetSnackbar
 abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
     AppCompatActivity() {
 
-    private lateinit var viewDataBinding: VDB
+    private lateinit var vdb: VDB
 
-    protected abstract val viewModel: BVM
-
-    abstract val bindingVariable: Int
+    protected abstract val vm: BVM
 
     private var noInternetSnackbar: NoInternetSnackbar? = null
 
@@ -30,18 +28,14 @@ abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
 
         super.onCreate(savedInstanceState)
 
-        viewDataBinding = DataBindingUtil.setContentView(this, layoutRes)
+        vdb = DataBindingUtil.setContentView(this, layoutRes)
 
-        viewDataBinding.apply {
-            setVariable(
-                bindingVariable,
-                viewModel
-            )
+        vdb.apply {
             lifecycleOwner = this@BaseActivity
             executePendingBindings()
         }
 
-        viewModel.start()
+        vm.start()
 
         initUi()
 
@@ -56,7 +50,7 @@ abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
     }
 
     override fun onDestroy() {
-        viewModel.stop()
+        vm.stop()
         super.onDestroy()
     }
 

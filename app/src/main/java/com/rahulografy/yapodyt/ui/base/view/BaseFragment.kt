@@ -20,11 +20,9 @@ import org.greenrobot.eventbus.ThreadMode
 
 abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragment() {
 
-    protected lateinit var viewDataBinding: VDB
+    protected lateinit var vdb: VDB
 
-    protected abstract val viewModel: BVM
-
-    abstract val bindingVariable: Int
+    protected abstract val vm: BVM
 
     @get:LayoutRes
     protected abstract val layoutRes: Int
@@ -37,7 +35,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding =
+        vdb =
             DataBindingUtil
                 .inflate(
                     inflater,
@@ -45,22 +43,18 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
                     container,
                     false
                 )
-        return viewDataBinding.root
+        return vdb.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewDataBinding.apply {
-            setVariable(
-                bindingVariable,
-                viewModel
-            )
+        vdb.apply {
             lifecycleOwner = this@BaseFragment
             executePendingBindings()
         }
 
-        viewModel.start()
+        vm.start()
 
         initToolBar()
 
@@ -82,7 +76,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
     }
 
     override fun onDestroyView() {
-        viewModel.stop()
+        vm.stop()
         super.onDestroyView()
     }
 
