@@ -2,8 +2,8 @@ package com.rahulografy.yapodyt
 
 import android.app.Application
 import android.content.Context
-import android.preference.PreferenceManager
 import androidx.multidex.MultiDex
+import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.facebook.stetho.Stetho
 import com.rahulografy.yapodyt.util.ext.prefs
 import dagger.hilt.android.HiltAndroidApp
@@ -17,7 +17,7 @@ open class App : Application() {
         // Init Stetho
         Stetho.initializeWithDefaults(this)
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        prefs = getDefaultSharedPreferences(this)
     }
 
     override fun attachBaseContext(base: Context?) {
