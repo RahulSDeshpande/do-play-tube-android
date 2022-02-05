@@ -13,7 +13,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_video_thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="260dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher_round_grey" />
 
@@ -37,10 +37,10 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circle_image_view_video_channel"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_margin="@dimen/space_normal"
-            android:elevation="4dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="@dimen/space_small"
+            android:padding="@dimen/space_tiny"
             android:src="@mipmap/ic_launcher_round"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view_video_thumbnail" />
@@ -49,8 +49,7 @@
             android:id="@+id/text_view_video_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_normal"
-            android:layout_marginTop="@dimen/space_normal"
+            android:layout_marginTop="@dimen/space_small"
             android:layout_marginEnd="@dimen/space_normal"
             android:layout_marginBottom="@dimen/space_normal"
             android:ellipsize="end"
@@ -58,7 +57,7 @@
             android:lineSpacingExtra="4dp"
             android:maxLines="2"
             android:textColor="@color/default_text_color_1"
-            android:textSize="@dimen/text_xlarge"
+            android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/circle_image_view_video_channel"
             app:layout_constraintTop_toBottomOf="@+id/image_view_video_thumbnail"
@@ -73,7 +72,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/default_text_color_2"
-            android:textSize="@dimen/text_xlarge"
+            android:textSize="@dimen/text_tiny"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/text_view_video_title"
             app:layout_constraintStart_toStartOf="@+id/text_view_video_title"
