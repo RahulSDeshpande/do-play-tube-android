@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.model
+package com.rahulografy.yapodyt.data.model.videos
 
 data class Id(
     val kind: String,

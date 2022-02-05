@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.model
+package com.rahulografy.yapodyt.data.model.videos
 
 data class High(
     val height: Int,

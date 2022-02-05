@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.model
+package com.rahulografy.yapodyt.data.model.videos
 
 import com.rahulografy.yapodyt.util.ext.isNotNullOrBlank
 
