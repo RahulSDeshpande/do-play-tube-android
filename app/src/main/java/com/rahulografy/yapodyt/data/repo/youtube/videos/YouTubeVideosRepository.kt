@@ -9,4 +9,7 @@ class YouTubeVideosRepository @Inject constructor(
 
     override suspend fun getMostPopularVideos() =
         youTubeVideosRemoteDataSource.getMostPopularVideos()
+
+    override suspend fun getVideoCategories() =
+        youTubeVideosRemoteDataSource.getVideoCategories()
 }

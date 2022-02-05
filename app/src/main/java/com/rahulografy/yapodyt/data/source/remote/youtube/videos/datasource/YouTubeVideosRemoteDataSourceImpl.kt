@@ -10,4 +10,7 @@ class YouTubeVideosRemoteDataSourceImpl
 
     override suspend fun getMostPopularVideos() =
         youTubeApiService.getMostPopularVideos()
+
+    override suspend fun getVideoCategories() =
+        youTubeApiService.getVideoCategories()
 }
