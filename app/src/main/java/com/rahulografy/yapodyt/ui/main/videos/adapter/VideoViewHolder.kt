@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.ItemVideoBinding
-import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
+import com.rahulografy.yapodyt.ui.main.videos.listener.VideoListListener
 import com.squareup.picasso.Picasso
 
 class VideoViewHolder(
@@ -13,7 +13,7 @@ class VideoViewHolder(
 
     fun bind(
         videoItem: VideoItem,
-        videoEventListener: VideoEventListener?
+        videoListListener: VideoListListener?
     ) {
         binding.apply {
 
@@ -30,7 +30,7 @@ class VideoViewHolder(
             textViewVideoChannelName.text = videoItem.snippet.channelTitle
 
             root.setOnClickListener {
-                videoEventListener?.onVideoClicked(
+                videoListListener?.onVideoClicked(
                     listPosition = adapterPosition,
                     videoItem = videoItem
                 )

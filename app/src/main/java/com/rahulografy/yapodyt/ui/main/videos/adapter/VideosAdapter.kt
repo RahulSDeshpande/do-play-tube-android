@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.ui.base.adapter.BaseListAdapter
-import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
+import com.rahulografy.yapodyt.ui.main.videos.listener.VideoListListener
 
 class VideosAdapter(
-    private val videoEventListener: VideoEventListener? = null
+    private val videoListListener: VideoListListener? = null
 ) : BaseListAdapter<VideoItem, VideoViewHolder>(VideosDiffUtilItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -25,7 +25,7 @@ class VideosAdapter(
     override fun onBindViewHolder(viewHolder: VideoViewHolder, position: Int) =
         viewHolder.bind(
             videoItem = getItem(position),
-            videoEventListener = videoEventListener
+            videoListListener = videoListListener
         )
 
     override fun setData(data: List<VideoItem>?) {

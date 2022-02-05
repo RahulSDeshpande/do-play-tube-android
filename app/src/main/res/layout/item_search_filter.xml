@@ -8,31 +8,33 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:paddingStart="@dimen/space_normal"
+        android:paddingTop="@dimen/space_normal"
+        android:paddingEnd="@dimen/space_normal"
+        android:paddingBottom="@dimen/space_normal">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_view_search_filter_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:layout_marginEnd="@dimen/space_normal"
             android:button="@drawable/radio_button_inset"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingTop="@dimen/space_normal"
-            android:paddingEnd="@dimen/space_normal"
-            android:paddingBottom="@dimen/space_normal"
-            android:text="@string/videos_search_filter_category_music"
+            android:textColor="@color/default_text_color_1"
             android:textSize="@dimen/text_large"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_search_filter_check"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Music &amp; Movies" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_view_video_thumbnail"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
+            android:id="@+id/image_view_search_filter_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_check"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@mipmap/ic_launcher_round_grey" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

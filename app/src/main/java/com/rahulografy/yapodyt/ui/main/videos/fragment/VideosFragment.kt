@@ -15,7 +15,7 @@ import com.rahulografy.yapodyt.ui.main.activity.MainActivityViewModel
 import com.rahulografy.yapodyt.ui.main.searchfilter.SearchFiltersFragment
 import com.rahulografy.yapodyt.ui.main.videoplayer.VideoPlayerFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
-import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
+import com.rahulografy.yapodyt.ui.main.videos.listener.VideoListListener
 import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
 import com.rahulografy.yapodyt.util.ext.toast
@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class VideosFragment :
     BaseFragment<FragmentVideosBinding, VideosFragmentViewModel>(),
-    VideoEventListener {
+    VideoListListener {
 
     private lateinit var videosAdapter: VideosAdapter
 
@@ -62,8 +62,6 @@ class VideosFragment :
 
     override fun initUi() {
 
-        videosAdapter = VideosAdapter(videoEventListener = this)
-
         vm.getVideos(force = true)
     }
 
@@ -81,9 +79,12 @@ class VideosFragment :
 
     private fun initVideosRecyclerView(videoItems: List<VideoItem>?) {
         if (videoItems.isNullOrEmpty().not()) {
+            videosAdapter = VideosAdapter(videoListListener = this)
             vdb.recyclerViewVideos.adapter = videosAdapter
             vdb.recyclerViewVideos.list()
+
             videosAdapter.submitList(videoItems)
+
             showVideosRecyclerView(show = true)
         } else {
             showVideosRecyclerView(show = false)
