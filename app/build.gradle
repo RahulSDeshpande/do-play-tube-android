@@ -89,7 +89,7 @@ dependencies {
     implementation deps.okhttp.runtime
     implementation deps.okhttp.logging
     implementation deps.retrofit.runtime
-    implementation deps.retrofit.rxjava2
+    // implementation deps.retrofit.rxjava2
     implementation deps.retrofit.gson
 
     // RxJava and RxAndroid

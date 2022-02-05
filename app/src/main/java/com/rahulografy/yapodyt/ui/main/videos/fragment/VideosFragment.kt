@@ -7,6 +7,7 @@ import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
+import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,10 +27,11 @@ class VideosFragment :
     override fun initUi() {
 
         videosAdapter = VideosAdapter(videoEventListener = this)
+
+        vm.getVideos(force = true)
     }
 
     override fun initObservers() {
-
         vm.apply {
             videoItems
                 .observe(
@@ -43,8 +45,10 @@ class VideosFragment :
 
     private fun initVideosRecyclerView(videoItems: List<VideoItem>?) {
         if (videoItems.isNullOrEmpty().not()) {
-            showVideosRecyclerView(show = true)
+            vdb.recyclerViewVideos.adapter = videosAdapter
+            vdb.recyclerViewVideos.list()
             videosAdapter.submitList(videoItems)
+            showVideosRecyclerView(show = true)
         } else {
             showVideosRecyclerView(show = false)
         }

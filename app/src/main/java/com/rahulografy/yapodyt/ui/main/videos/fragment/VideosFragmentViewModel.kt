@@ -17,7 +17,6 @@ class VideosFragmentViewModel
 
     val isDataLoading = ObservableBoolean(false)
 
-    // private var _videoItems = SingleLiveEvent<List<VideoItem>>()
     var videoItems = SingleLiveEvent<List<VideoItem>>()
 
     fun getVideos(

@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.source.remote.youtune.videos.datasource
+package com.rahulografy.yapodyt.data.source.remote.youtube.videos.datasource
 
 import com.rahulografy.yapodyt.data.model.YoutubeApiResponse
 import retrofit2.Response

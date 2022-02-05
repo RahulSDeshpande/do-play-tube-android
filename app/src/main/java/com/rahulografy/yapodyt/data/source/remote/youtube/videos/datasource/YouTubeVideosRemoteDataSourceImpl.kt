@@ -1,6 +1,6 @@
-package com.rahulografy.yapodyt.data.source.remote.youtune.videos.datasource
+package com.rahulografy.yapodyt.data.source.remote.youtube.videos.datasource
 
-import com.rahulografy.yapodyt.data.source.remote.youtune.videos.service.YoutubeApiService
+import com.rahulografy.yapodyt.data.source.remote.youtube.videos.service.YoutubeApiService
 import javax.inject.Inject
 
 class YouTubeVideosRemoteDataSourceImpl

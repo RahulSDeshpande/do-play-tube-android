@@ -1,7 +1,7 @@
 package com.rahulografy.yapodyt.di
 
-import com.rahulografy.yapodyt.data.source.remote.youtune.videos.datasource.YouTubeVideosRemoteDataSource
-import com.rahulografy.yapodyt.data.source.remote.youtune.videos.datasource.YouTubeVideosRemoteDataSourceImpl
+import com.rahulografy.yapodyt.data.source.remote.youtube.videos.datasource.YouTubeVideosRemoteDataSource
+import com.rahulografy.yapodyt.data.source.remote.youtube.videos.datasource.YouTubeVideosRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

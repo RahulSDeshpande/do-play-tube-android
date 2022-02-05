@@ -1,4 +1,4 @@
-package com.rahulografy.yapodyt.data.source.remote.youtune.videos.service
+package com.rahulografy.yapodyt.data.source.remote.youtube.videos.service
 
 import com.rahulografy.yapodyt.data.model.YoutubeApiResponse
 import com.rahulografy.yapodyt.util.Constants.Network.Key.YT_API_KEY

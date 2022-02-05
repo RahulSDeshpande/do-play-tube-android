@@ -1,6 +1,6 @@
 package com.rahulografy.yapodyt.di
 
-import com.rahulografy.yapodyt.data.source.remote.youtune.videos.service.YoutubeApiService
+import com.rahulografy.yapodyt.data.source.remote.youtube.videos.service.YoutubeApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nav_graph" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentVideos">
+
+    <fragment
+        android:id="@+id/fragmentVideos"
+        android:name="com.rahulografy.yapodyt.ui.main.videos.fragment.VideosFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_videos" />
+
+</navigation>
