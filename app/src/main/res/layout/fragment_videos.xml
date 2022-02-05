@@ -21,7 +21,6 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/app_bar_layout_videos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="8dp"
@@ -55,6 +54,7 @@
                     android:id="@+id/recycler_view_videos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clipToPadding="false"
                     android:paddingTop="@dimen/space_small"
                     android:paddingBottom="@dimen/space_small"
                     app:layout_constraintBottom_toBottomOf="parent"

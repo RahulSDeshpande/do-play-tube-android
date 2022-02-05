@@ -1,6 +1,7 @@
 package com.rahulografy.yapodyt.ui.main.videos.adapter
 
 import androidx.recyclerview.widget.RecyclerView
+import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.VideoItem
 import com.rahulografy.yapodyt.databinding.ItemVideoBinding
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
@@ -18,7 +19,8 @@ class VideoViewHolder(
 
             Picasso
                 .get()
-                .load(videoItem.snippet.thumbnails.high.url)
+                .load(videoItem.snippet.thumbnails.hiRes())
+                .placeholder(R.drawable.ic_launcher_foreground_grey)
                 .into(imageViewVideoThumbnail)
 
             textViewVideoDuration.text = videoItem.contentDetails.duration

@@ -39,4 +39,6 @@
 
     <string name="search_filter">Filter</string>
 
+    <string name="video_player_title">Playing video</string>
+
 </resources>

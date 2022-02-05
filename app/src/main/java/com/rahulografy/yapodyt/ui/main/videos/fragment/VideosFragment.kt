@@ -1,5 +1,6 @@
 package com.rahulografy.yapodyt.ui.main.videos.fragment
 
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -9,8 +10,11 @@ import com.rahulografy.yapodyt.data.model.VideoItem
 import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseFragment
 import com.rahulografy.yapodyt.ui.main.searchfilter.SearchFiltersFragment
+import com.rahulografy.yapodyt.ui.main.videoplayer.VideoPlayerFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
+import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_CHANNEL_NAME
+import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_ID
 import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
 import com.rahulografy.yapodyt.util.ext.toast
@@ -103,6 +107,12 @@ class VideosFragment :
         listPosition: Int,
         videoItem: VideoItem
     ) {
-        toast("Open Video Player")
+        val videoPlayerFragment = VideoPlayerFragment()
+        videoPlayerFragment.arguments =
+            Bundle().apply {
+                putString(YOUTUBE_VIDEO_CHANNEL_NAME, videoItem.snippet.channelTitle)
+                putString(YOUTUBE_VIDEO_ID, videoItem.id)
+            }
+        videoPlayerFragment.show(childFragmentManager, videoPlayerFragment.tag)
     }
 }
