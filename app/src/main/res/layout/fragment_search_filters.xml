@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.rahulografy.yapodyt.ui.main.videos.fragment.VideosFragmentViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout_search_filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_search_filters"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:navigationIcon="@drawable/ic_close"
+                    app:title="@string/search_filter_title"
+                    app:titleCentered="true"
+                    app:titleTextColor="@color/default_text_color_white" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <RadioGroup
+                android:id="@+id/radio_group_search_filters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:button="@drawable/radio_button_inset"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/space_large"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/space_small"
+                    android:paddingTop="@dimen/space_medium"
+                    android:paddingEnd="@dimen/space_large"
+                    android:paddingBottom="@dimen/space_medium"
+                    android:text="Music"
+                    android:textSize="@dimen/text_large" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:button="@drawable/radio_button_inset"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/space_large"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/space_small"
+                    android:paddingTop="@dimen/space_medium"
+                    android:paddingEnd="@dimen/space_large"
+                    android:paddingBottom="@dimen/space_medium"
+                    android:text="Sports"
+                    android:textSize="@dimen/text_large" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:button="@drawable/radio_button_inset"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/space_large"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/space_small"
+                    android:paddingTop="@dimen/space_medium"
+                    android:paddingEnd="@dimen/space_large"
+                    android:paddingBottom="@dimen/space_medium"
+                    android:text="Gaming"
+                    android:textSize="@dimen/text_large" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:button="@drawable/radio_button_inset"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/space_large"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/space_small"
+                    android:paddingTop="@dimen/space_medium"
+                    android:paddingEnd="@dimen/space_large"
+                    android:paddingBottom="@dimen/space_medium"
+                    android:text="Pets &amp; Animals"
+                    android:textSize="@dimen/text_large" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:button="@drawable/radio_button_inset"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/space_large"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/space_small"
+                    android:paddingTop="@dimen/space_medium"
+                    android:paddingEnd="@dimen/space_large"
+                    android:paddingBottom="@dimen/space_medium"
+                    android:text="Film &amp; Animation"
+                    android:textSize="@dimen/text_large" />
+
+            </RadioGroup>
+
+            <!-- <androidx.appcompat.widget.AppCompatTextView
+                 android:id="@+id/text_view_search_filter_name"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:fontFamily="@font/sans_bold"
+                 android:paddingStart="@dimen/space_large"
+                 android:paddingTop="@dimen/space_medium"
+                 android:paddingEnd="@dimen/space_large"
+                 android:paddingBottom="@dimen/space_medium"
+                 android:textColor="@color/default_text_color_0"
+                 android:textSize="@dimen/text_large"
+                 tools:text="10:30" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

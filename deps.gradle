@@ -14,10 +14,8 @@ versions.test_runner = "1.0.2"
 versions.junit = "4.12"
 versions.espresso = "3.0.2"
 versions.mockito = "2.21.0"
-versions.rxjava2 = "2.2.2"
-versions.rxandroid = "2.1.0"
-versions.retrofit = "2.3.0"
-versions.okhttp = "3.11.0"
+versions.retrofit = "2.6.0"
+versions.okhttp = "4.9.0"
 versions.stetho = "1.5.0"
 versions.glide = "4.8.0"
 versions.recyclerViewAnimators = "4.0.1"
@@ -69,14 +67,6 @@ okhttp.runtime = "com.squareup.okhttp3:okhttp:$versions.okhttp"
 okhttp.logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
 deps.okhttp = okhttp
 
-// def dagger = [:]
-// dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
-// dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
-// dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
-// dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
-// dagger.android_processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
-// deps.dagger = dagger
-
 def kotlin = [:]
 kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
@@ -93,11 +83,6 @@ testing.junit = "junit:junit:$versions.junit"
 testing.mock_core = "org.mockito:mockito-core:$versions.mockito"
 testing.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
 deps.testing = testing
-
-def reactivex = [:]
-reactivex.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
-reactivex.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
-deps.reactivex = reactivex
 
 def stetho = [:]
 stetho.runtime = "com.facebook.stetho:stetho:$versions.stetho"
