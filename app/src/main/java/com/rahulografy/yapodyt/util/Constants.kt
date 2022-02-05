@@ -21,5 +21,10 @@ object Constants {
         object Cache {
             const val NAME = "uapod-yt-cache"
         }
+
+        object Argument {
+            const val YOUTUBE_VIDEO_CHANNEL_NAME = "YOUTUBE_VIDEO_CHANNEL_NAME"
+            const val YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID"
+        }
     }
 }

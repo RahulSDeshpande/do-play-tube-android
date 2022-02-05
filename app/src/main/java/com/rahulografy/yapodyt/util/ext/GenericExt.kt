@@ -24,6 +24,10 @@ fun <E> Collection<E>?.toArrayList(): ArrayList<E> =
     if (this == null) arrayListOf()
     else ArrayList(this)
 
+fun CharSequence?.isNotNullOrBlank() = this.isNullOrBlank().not()
+
+fun <E> Collection<E>?.isNotNullOrEmpty() = this.isNullOrEmpty().not()
+
 // ISO 8601
 // fun convertTime() {
 //     val downTime = 755L
