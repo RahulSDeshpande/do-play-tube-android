@@ -2,7 +2,7 @@ package com.rahulografy.yapodyt.ui.main.videos.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.rahulografy.yapodyt.R
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.ItemVideoBinding
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
 import com.squareup.picasso.Picasso

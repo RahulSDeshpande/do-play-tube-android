@@ -8,6 +8,7 @@ import androidx.databinding.ViewDataBinding
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.util.event.InternetConnectionEvent
 import com.rahulografy.yapodyt.util.ext.isAppOnline
+import com.rahulografy.yapodyt.util.ext.toast
 import org.greenrobot.eventbus.EventBus
 import org.imaginativeworld.oopsnointernet.ConnectionCallback
 import org.imaginativeworld.oopsnointernet.NoInternetSnackbar
@@ -80,9 +81,9 @@ abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
 
     fun isAppOnline() =
         isAppOnline(this).apply {
-            /*if (not()) {
+            if (not()) {
                 toast(getString(R.string.msg_no_internet))
-            }*/
+            }
         }
 
     open fun onInternetConnectionUpdate(isActive: Boolean) {

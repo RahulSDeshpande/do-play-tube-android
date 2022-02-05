@@ -9,6 +9,7 @@ object Constants {
         }
 
         object Key {
+            // TODO | STORE THIS KEY AT A SECURE PLACE
             const val YT_API_KEY = "AIzaSyC3OdQwhX3J-ZSH8EDbF2PD3NPL90KNLtc"
         }
 

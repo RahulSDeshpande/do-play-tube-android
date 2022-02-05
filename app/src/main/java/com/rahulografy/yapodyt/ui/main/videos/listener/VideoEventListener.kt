@@ -1,6 +1,6 @@
 package com.rahulografy.yapodyt.ui.main.videos.listener
 
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 
 interface VideoEventListener {
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.rahulografy.yapodyt.R
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.ui.base.adapter.BaseListAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
 

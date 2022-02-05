@@ -1,7 +1,7 @@
 package com.rahulografy.yapodyt.ui.main.videos.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 
 class VideosDiffUtilItemCallback : DiffUtil.ItemCallback<VideoItem>() {
 

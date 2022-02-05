@@ -12,8 +12,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.util.event.InternetConnectionEvent
 import com.rahulografy.yapodyt.util.ext.isAppOnline
+import com.rahulografy.yapodyt.util.ext.toast
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -83,7 +85,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
     private fun initToolBar() {
         if (toolbarId != 0 && view != null) {
             getSupportActionBar(requireView().findViewById(toolbarId))
-            setHasOptionsMenu(true)
+            // setHasOptionsMenu(true)
         }
     }
 
@@ -101,9 +103,9 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
 
     fun isAppOnline() =
         isAppOnline(context).apply {
-            /*if (not()) {
+            if (not()) {
                 toast(getString(R.string.msg_no_internet))
-            }*/
+            }
         }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

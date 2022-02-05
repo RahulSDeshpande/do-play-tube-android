@@ -1,5 +1,7 @@
 package com.rahulografy.yapodyt.ui.main.videoplayer
 
+import android.view.MenuItem
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -7,9 +9,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.databinding.FragmentVideoPlayerBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseDialogFragment
-import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_CHANNEL_NAME
-import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_ID
-import com.rahulografy.yapodyt.util.ext.isNotNullOrBlank
+import com.rahulografy.yapodyt.ui.main.activity.MainActivityViewModel
 import com.rahulografy.yapodyt.util.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +23,13 @@ class VideoPlayerFragment :
 
     override val vm: VideoPlayerFragmentViewModel by viewModels()
 
+    private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) close()
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun initUi() {
 
         getVideoInfo()
@@ -32,18 +39,18 @@ class VideoPlayerFragment :
 
     private fun getVideoInfo() {
 
-        val channelName = arguments?.getString(YOUTUBE_VIDEO_CHANNEL_NAME)
+        val videoItem = mainActivityViewModel.selectedVideoItem
 
-        if (channelName.isNotNullOrBlank()) {
-            vdb.toolbarVideoPlayer.title = channelName
-        }
+        if (videoItem != null) {
+            vdb.toolbarVideoPlayer.title = videoItem.snippet.channelTitle
 
-        val videoId = arguments?.getString(YOUTUBE_VIDEO_ID)
+            val videoId = videoItem.id
 
-        if (!videoId.isNullOrBlank()) {
-            youTubeVideoId = videoId
-        } else {
-            showVideoError()
+            if (videoId.isNotBlank()) {
+                youTubeVideoId = videoId
+            } else {
+                showVideoError()
+            }
         }
     }
 
@@ -72,9 +79,5 @@ class VideoPlayerFragment :
 
     private fun showVideoError() {
         toast("Error occurred while loading this Youtube video, please try again.")
-    }
-
-    private fun close() {
-        dismissAllowingStateLoss()
     }
 }

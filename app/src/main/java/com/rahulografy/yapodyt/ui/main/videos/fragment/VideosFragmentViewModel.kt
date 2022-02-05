@@ -2,7 +2,7 @@ package com.rahulografy.yapodyt.ui.main.videos.fragment
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.viewModelScope
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.data.repo.youtube.videos.YouTubeVideosRepository
 import com.rahulografy.yapodyt.ui.base.view.BaseViewModel
 import com.rahulografy.yapodyt.util.SingleLiveEvent

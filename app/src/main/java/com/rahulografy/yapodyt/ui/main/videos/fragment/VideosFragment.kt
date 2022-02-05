@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.rahulografy.yapodyt.R
-import com.rahulografy.yapodyt.data.model.VideoItem
+import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseFragment
+import com.rahulografy.yapodyt.ui.main.activity.MainActivityViewModel
 import com.rahulografy.yapodyt.ui.main.searchfilter.SearchFiltersFragment
 import com.rahulografy.yapodyt.ui.main.videoplayer.VideoPlayerFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
-import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_CHANNEL_NAME
-import com.rahulografy.yapodyt.util.Constants.Network.Argument.YOUTUBE_VIDEO_ID
 import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
 import com.rahulografy.yapodyt.util.ext.toast
@@ -35,6 +36,8 @@ class VideosFragment :
 
     override val vm: VideosFragmentViewModel by viewModels()
 
+    private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_videos, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -49,6 +52,12 @@ class VideosFragment :
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
     }
 
     override fun initUi() {
@@ -107,12 +116,9 @@ class VideosFragment :
         listPosition: Int,
         videoItem: VideoItem
     ) {
+        mainActivityViewModel.selectedVideoItem = videoItem
+
         val videoPlayerFragment = VideoPlayerFragment()
-        videoPlayerFragment.arguments =
-            Bundle().apply {
-                putString(YOUTUBE_VIDEO_CHANNEL_NAME, videoItem.snippet.channelTitle)
-                putString(YOUTUBE_VIDEO_ID, videoItem.id)
-            }
         videoPlayerFragment.show(childFragmentManager, videoPlayerFragment.tag)
     }
 }

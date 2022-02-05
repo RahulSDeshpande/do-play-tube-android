@@ -15,7 +15,9 @@ class MainActivity : BaseActivity<ActivityHomeBinding, MainActivityViewModel>() 
 
     override val vm: MainActivityViewModel by viewModels()
 
-    override fun initUi() {}
+    override fun initUi() {
+        vm.getVideoCategories()
+    }
 
     fun showSnackbar(message: String) {
         Snackbar

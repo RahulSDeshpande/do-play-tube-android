@@ -14,7 +14,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.util.ext.isAppOnline
+import com.rahulografy.yapodyt.util.ext.toast
 
 abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
     DialogFragment() {
@@ -93,8 +95,12 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
 
     fun isAppOnline() =
         isAppOnline(context).apply {
-            /*if (not()) {
+            if (not()) {
                 toast(getString(R.string.msg_no_internet))
-            }*/
+            }
         }
+
+    protected fun close() {
+        dismissAllowingStateLoss()
+    }
 }
