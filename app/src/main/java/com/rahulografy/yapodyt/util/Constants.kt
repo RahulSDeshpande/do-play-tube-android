@@ -9,7 +9,7 @@ object Constants {
         }
 
         object Key {
-            const val YT_API_KEY = ""
+            const val YT_API_KEY = "AIzaSyC3OdQwhX3J-ZSH8EDbF2PD3NPL90KNLtc"
         }
 
         object Timeout {

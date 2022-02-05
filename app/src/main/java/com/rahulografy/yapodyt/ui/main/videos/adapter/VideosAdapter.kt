@@ -8,12 +8,13 @@ import com.rahulografy.yapodyt.data.model.VideoItem
 import com.rahulografy.yapodyt.ui.base.adapter.BaseListAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
 
-class VideosAdapter(private val videoEventListener: VideoEventListener? = null) :
-    BaseListAdapter<VideoItem, VideoViewHolder>(VideosDiffUtilItemCallback()) {
+class VideosAdapter(
+    private val videoEventListener: VideoEventListener? = null
+) : BaseListAdapter<VideoItem, VideoViewHolder>(VideosDiffUtilItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         VideoViewHolder(
-            DataBindingUtil.inflate(
+            binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
                 R.layout.item_video,
                 parent,
