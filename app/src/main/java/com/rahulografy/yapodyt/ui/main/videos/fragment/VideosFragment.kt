@@ -1,14 +1,19 @@
 package com.rahulografy.yapodyt.ui.main.videos.fragment
 
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.viewModels
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.VideoItem
 import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseFragment
+import com.rahulografy.yapodyt.ui.main.searchfilter.SearchFiltersFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoEventListener
 import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
+import com.rahulografy.yapodyt.util.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,11 +23,29 @@ class VideosFragment :
 
     private lateinit var videosAdapter: VideosAdapter
 
+    private var searchFiltersFragment: SearchFiltersFragment? = null
+
     override val layoutRes get() = R.layout.fragment_videos
 
     override val toolbarId: Int get() = R.id.toolbar_videos
 
     override val vm: VideosFragmentViewModel by viewModels()
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_videos, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (vm.isDataLoading.get()) {
+            toast(getString(R.string.msg_fetching_data_please_wait))
+        } else {
+            when (item.itemId) {
+                R.id.menu_action_filter -> openSearchFiltersFragment()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun initUi() {
 
@@ -65,14 +88,21 @@ class VideosFragment :
     ) {
         openVideoPlayerFragment(
             listPosition = listPosition,
-            postId = videoItem
+            videoItem = videoItem
         )
+    }
+
+    private fun openSearchFiltersFragment() {
+        if (searchFiltersFragment == null) {
+            searchFiltersFragment = SearchFiltersFragment()
+        }
+        searchFiltersFragment?.show(childFragmentManager, searchFiltersFragment?.tag)
     }
 
     private fun openVideoPlayerFragment(
         listPosition: Int,
-        postId: VideoItem
+        videoItem: VideoItem
     ) {
-        // TODO | OPEN VIDEO PLAYER BOTTOM SHEET
+        toast("Open Video Player")
     }
 }

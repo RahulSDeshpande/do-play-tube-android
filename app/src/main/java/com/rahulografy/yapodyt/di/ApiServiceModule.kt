@@ -1,6 +1,6 @@
 package com.rahulografy.yapodyt.di
 
-import com.rahulografy.yapodyt.data.source.remote.youtube.videos.service.YoutubeApiService
+import com.rahulografy.yapodyt.data.source.remote.youtube.videos.service.YouTubeApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +14,6 @@ object ApiServiceModule {
 
     @Provides
     @Singleton
-    fun provideYoutubeApiService(retrofit: Retrofit): YoutubeApiService =
-        retrofit.create(YoutubeApiService::class.java)
+    fun provideYoutubeApiService(retrofit: Retrofit): YouTubeApiService =
+        retrofit.create(YouTubeApiService::class.java)
 }

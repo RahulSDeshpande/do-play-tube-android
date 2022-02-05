@@ -21,7 +21,7 @@ class VideoViewHolder(
                 .load(videoItem.snippet.thumbnails.high.url)
                 .into(imageViewVideoThumbnail)
 
-            textViewVideoDuration.text = videoItem.snippet.publishTime
+            textViewVideoDuration.text = videoItem.contentDetails.duration
 
             textViewVideoTitle.text = videoItem.snippet.title
 

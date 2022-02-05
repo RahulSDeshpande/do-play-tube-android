@@ -1,13 +1,14 @@
 package com.rahulografy.yapodyt.ui.main.videos.fragment
 
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.viewModelScope
 import com.rahulografy.yapodyt.data.model.VideoItem
 import com.rahulografy.yapodyt.data.repo.youtube.videos.YouTubeVideosRepository
 import com.rahulografy.yapodyt.ui.base.view.BaseViewModel
-import com.rahulografy.yapodyt.util.Coroutines
 import com.rahulografy.yapodyt.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class VideosFragmentViewModel
@@ -29,7 +30,7 @@ class VideosFragmentViewModel
                 isDataLoading.set(true)
             }
 
-            Coroutines.main {
+            viewModelScope.launch {
                 val response = videosRepository.getMostPopularVideos()
 
                 if (response.isSuccessful) {
