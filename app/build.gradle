@@ -89,12 +89,7 @@ dependencies {
     implementation deps.okhttp.runtime
     implementation deps.okhttp.logging
     implementation deps.retrofit.runtime
-    // implementation deps.retrofit.rxjava2
     implementation deps.retrofit.gson
-
-    // RxJava and RxAndroid
-    implementation deps.reactivex.rxjava2
-    implementation deps.reactivex.rxandroid
 
     // Stetho
     implementation deps.stetho.runtime
@@ -134,4 +129,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
