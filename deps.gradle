@@ -108,5 +108,5 @@ build_versions.applicationId = "com.rahulografy.yapodyt"
 build_versions.min_sdk = 21
 build_versions.target_sdk = 31
 build_versions.versionCode = 1
-build_versions.versionName = "1.0"
+build_versions.versionName = "1.4"
 ext.build_versions = build_versions
