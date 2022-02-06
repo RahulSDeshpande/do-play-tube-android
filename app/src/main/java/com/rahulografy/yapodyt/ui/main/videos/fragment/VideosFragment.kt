@@ -58,6 +58,7 @@ class VideosFragment :
     }
 
     override fun initUi() {
+        updateCategoryHeader()
         getVideos()
         initSwipeRefreshLayout()
     }
