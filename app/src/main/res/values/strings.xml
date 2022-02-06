@@ -1,3 +1,50 @@
 <resources>
-    <string name="app_name">yapod YT</string>
+
+    <string name="app_name">DoPayTube</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="msg_fetching_data_please_wait">Data is being fetched, please wait…</string>
+    <string name="msg_no_internet">Your device is offline.\nPlease connect to the internet.</string>
+    <string name="msg_yes_internet">Your device is now online.</string>
+    <string name="msg_no_videos">No videos found.\nPull to refresh to try again.</string>
+    <string name="msg_no_video_categories">No video categories found.\nPull to refresh to try again.</string>
+    <string name="msg_no_internet_1">Oops, no active internet connection.</string>
+    <string name="msg_airplane_mode_is_turned_on">You have turned on the airplane mode.</string>
+
+    <string name="settings">Settings</string>
+
+    <!-- 'Lorem ipsum..' Placeholders -->
+    <string name="lorem_ipsum_tiny">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+    <string name="lorem_ipsum_small">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</string>
+
+    <string name="lorem_ipsum_medium">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisiut aliquip ex ea commodo consequat.</string>
+
+    <string name="lorem_ipsum_large">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisiut aliquip ex ea commodo consequat.\nDuis aute
+        irure dolor inreprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident,
+        sunt inculpa qui officia deserunt mollit anim id est laborum.</string>
+
+    <string name="search_filter_title">Filter by category</string>
+
+    <string name="search_filter">Filter</string>
+
+    <string name="video_player_title">Playing video</string>
+    <string name="videos_search_filter_category_music">Music</string>
+    <string name="videos_search_filter_category_sports">Sports</string>
+    <string name="videos_search_filter_category_gaming">Gaming</string>
+    <string name="videos_search_filter_category_pets_and_animals">Pets &amp; Animals</string>
+    <string name="videos_search_filter_category_film_and_animation">Film &amp; Animation</string>
+
 </resources>

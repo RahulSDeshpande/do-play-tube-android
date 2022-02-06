@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Space size
+    <dimen name="space_tiny">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_normal">16dp</dimen>
+    <dimen name="space_medium">24dp</dimen>
+    <dimen name="space_large">32dp</dimen>
+    <dimen name="space_xlarge">40dp</dimen>
+    <dimen name="space_xxlarge">48dp</dimen>
+    <dimen name="space_xxxlarge">56dp</dimen>
+
+    // Text size
+    <dimen name="text_tiny">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxlarge">22sp</dimen>
+    <dimen name="text_xxxlarge">24sp</dimen>
+
+    // View size
+    <dimen name="size_padding">20dp</dimen>
+    <dimen name="size_avatar">40dp</dimen>
+    <dimen name="size_btn">50dp</dimen>
+
+    <dimen name="divider_height">0.5dp</dimen>
+
+</resources>

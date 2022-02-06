@@ -1,0 +1,76 @@
+{
+  "kind": "youtube#videoCategoryListResponse",
+  "etag": "fIIv2-q7-AkaOeJf0LPrlnu-0As",
+  "items": [
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "grPOPYEUUZN3ltuDUGEWlrTR90U",
+      "id": "1",
+      "snippet": {
+        "title": "Film & Animation",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "Q0xgUf8BFM8rW3W0R9wNq809xyA",
+      "id": "2",
+      "snippet": {
+        "title": "Autos & Vehicles",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "qnpwjh5QlWM5hrnZCvHisquztC4",
+      "id": "10",
+      "snippet": {
+        "title": "Music",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "HyFIixS5BZaoBdkQdLzPdoXWipg",
+      "id": "15",
+      "snippet": {
+        "title": "Pets & Animals",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "PNU8SwXhjsF90fmkilVohofOi4I",
+      "id": "17",
+      "snippet": {
+        "title": "Sports",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "5kFljz9YJ4lEgSfVwHWi5kTAwAs",
+      "id": "18",
+      "snippet": {
+        "title": "Short Movies",
+        "assignable": false,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    },
+    {
+      "kind": "youtube#videoCategory",
+      "etag": "ANnLQyzEA_9m3bMyJXMhKTCOiyg",
+      "id": "19",
+      "snippet": {
+        "title": "Travel & Events",
+        "assignable": true,
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ"
+      }
+    }
+  ]
+}

@@ -1,31 +1,57 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdk 31
+
+    compileSdkVersion build_versions.target_sdk
 
     defaultConfig {
-        applicationId "com.rahulografy.yapodyt"
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        applicationId build_versions.applicationId
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "YAPOD YT v${variant.versionName} [${variant.name.toUpperCase()}].apk"
+            }
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    dataBinding {
+        enabled = true
     }
+
+    android {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
+    }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -33,10 +59,79 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    // Android Support
+    implementation deps.support.appcompat
+    implementation deps.support.recyclerview
+    implementation deps.support.constraintlayout
+    implementation deps.support.fragment
+
+    // MultiDex
+    implementation deps.android.multidex
+
+    // Kotlin
+    implementation deps.kotlin.stdlib
+
+    // Lifecycle
+    implementation deps.lifecycle.extensions
+    kapt deps.lifecycle.compiler
+    testImplementation deps.arch_core.testing
+
+    // Navigation
+    implementation deps.navigation.fragment
+    implementation deps.navigation.uiKtx
+
+    // Room
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
+    kapt deps.room.compiler
+
+    // OkHttp and Retrofit
+    implementation deps.okhttp.runtime
+    implementation deps.okhttp.logging
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+
+    // Stetho
+    implementation deps.stetho.runtime
+    implementation deps.stetho.okhttp
+
+    // Glide
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+
+    // RecyclerView Item Animators
+    implementation deps.recyclerViewAnimators.recyclerViewAnimators
+
+    // Picasso
+    implementation deps.picasso.picasso
+
+    // ViewPager2
+    implementation deps.viewpager2.viewpager2
+
     implementation 'com.google.android.material:material:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+    implementation 'com.github.ImaginativeShohag:Oops-No-Internet:v1.1.5'
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+
+    // YouTube Player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }
