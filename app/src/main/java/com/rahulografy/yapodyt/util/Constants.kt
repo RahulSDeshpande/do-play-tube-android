@@ -34,5 +34,9 @@ object Constants {
         object Pref {
             const val VIDEO_CATEGORY_ID = "VIDEO_CATEGORY_ID"
         }
+
+        object Emoji {
+            const val SMILE = "\uD83D\uDE42"
+        }
     }
 }

@@ -17,6 +17,8 @@
 
     <color name="grey_2">#90000000</color>
 
+    <color name="grey_chip_bg">#90000000</color>
+
     <color name="black_15">#26000000</color>
     <color name="black_55">#8C000000</color>
     <color name="black_85">#D9000000</color>
