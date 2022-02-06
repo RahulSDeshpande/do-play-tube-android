@@ -45,8 +45,8 @@
                 android:id="@+id/circle_image_view_video_channel"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:padding="@dimen/space_tiny"
-                android:src="@mipmap/ic_launcher_round"
+                android:padding="@dimen/space_small"
+                android:src="@drawable/ic_play_circle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

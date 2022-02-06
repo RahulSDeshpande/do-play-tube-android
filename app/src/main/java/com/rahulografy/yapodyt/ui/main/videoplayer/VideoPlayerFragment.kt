@@ -13,6 +13,8 @@ import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.databinding.FragmentVideoPlayerBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseDialogFragment
 import com.rahulografy.yapodyt.ui.main.activity.MainActivityViewModel
+import com.rahulografy.yapodyt.util.Constants.Network.Emoji.SMILE
+import com.rahulografy.yapodyt.util.ext.humanize
 import com.rahulografy.yapodyt.util.ext.isNotNullOrBlank
 import com.rahulografy.yapodyt.util.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -108,9 +110,12 @@ class VideoPlayerFragment :
             textViewVideoTitle.text = vm.videoItem?.snippet?.title
             textViewVideoChannelName.text = vm.videoItem?.snippet?.channelTitle
 
-            textViewVideoLikes.text = vm.videoItem?.statistics?.likeCount
-            textViewVideoViews.text = vm.videoItem?.statistics?.viewCount
-            textViewVideoComments.text = vm.videoItem?.statistics?.commentCount
+            textViewVideoLikes.text =
+                vm.videoItem?.statistics?.likeCount?.toDoubleOrNull()?.humanize() ?: SMILE
+            textViewVideoViews.text =
+                vm.videoItem?.statistics?.viewCount?.toDoubleOrNull()?.humanize() ?: SMILE
+            textViewVideoComments.text =
+                vm.videoItem?.statistics?.commentCount?.toDoubleOrNull()?.humanize() ?: SMILE
 
             textViewVideoDescription.text = vm.videoItem?.snippet?.description
             textViewVideoDescription.movementMethod = ScrollingMovementMethod()

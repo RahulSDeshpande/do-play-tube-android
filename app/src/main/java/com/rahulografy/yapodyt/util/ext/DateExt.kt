@@ -67,3 +67,47 @@ fun getDurationString(duration: Long): String {
         }
     return output
 }
+
+private const val MILLIS_INFINITY = 1000000000000L
+private const val MILLIS_SECOND = 1000L
+private const val MILLIS_MINUTE = 60 * MILLIS_SECOND
+private const val MILLIS_HOUR = 60 * MILLIS_MINUTE
+private const val MILLIS_DAY = 24 * MILLIS_HOUR
+
+private const val FUTURE = "In the future"
+
+private const val SECOND = "s"
+private const val MINUTE = "m"
+private const val HOUR = "h"
+private const val DAY = "day"
+private const val DAYS = "days"
+
+private const val SUFFIX = "ago"
+
+private fun currentDate() = Calendar.getInstance().time
+
+/**
+ * Returns the epoch time converted to human readable format
+ */
+fun Long?.getTimeAgo(suffix: String = SUFFIX): String {
+    var time = this ?: 0L
+    if (time < MILLIS_INFINITY) {
+        time *= MILLIS_SECOND
+    }
+
+    val now = currentDate().time
+    if (time > currentDate().time || time <= 0) {
+        return FUTURE
+    }
+
+    val diff = now - time
+    return when {
+        diff < MILLIS_MINUTE -> "${diff / MILLIS_SECOND}$SECOND $suffix"
+        diff < MILLIS_MINUTE * 2 -> "1$MINUTE $suffix"
+        diff < MILLIS_MINUTE * 60 -> "${diff / MILLIS_MINUTE}$MINUTE $suffix"
+        diff < MILLIS_HOUR * 2 -> "1$HOUR $suffix"
+        diff < MILLIS_HOUR * 24 -> "${diff / MILLIS_HOUR}$HOUR $suffix"
+        diff < MILLIS_HOUR * 48 -> "2$DAY $suffix"
+        else -> "${diff / MILLIS_DAY} $DAYS $suffix"
+    }
+}
