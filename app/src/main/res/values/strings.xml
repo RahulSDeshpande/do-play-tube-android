@@ -70,5 +70,6 @@
     <string name="error_occurred_while_loading_video">Error occurred while loading this Youtube video, please try again.</string>
     <string name="description">Description</string>
     <string name="close">Close</string>
+    <string name="showing_videos_for_category">Showing videos for the category \'%s\'.</string>
 
 </resources>

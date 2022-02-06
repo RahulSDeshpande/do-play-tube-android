@@ -30,5 +30,9 @@ object Constants {
             const val YOUTUBE_VIDEO_CHANNEL_NAME = "YOUTUBE_VIDEO_CHANNEL_NAME"
             const val YOUTUBE_VIDEO_ID = "YOUTUBE_VIDEO_ID"
         }
+
+        object Pref {
+            const val VIDEO_CATEGORY_ID = "VIDEO_CATEGORY_ID"
+        }
     }
 }
