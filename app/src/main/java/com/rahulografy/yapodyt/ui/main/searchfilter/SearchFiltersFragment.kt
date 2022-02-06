@@ -14,6 +14,7 @@ import com.rahulografy.yapodyt.ui.main.searchfilter.adapter.SearchFiltersAdapter
 import com.rahulografy.yapodyt.ui.main.searchfilter.listener.VideoCategoryListListener
 import com.rahulografy.yapodyt.util.ext.isNotNullOrEmpty
 import com.rahulografy.yapodyt.util.ext.list
+import com.rahulografy.yapodyt.util.ext.videoCategoryId
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -79,6 +80,8 @@ class SearchFiltersFragment :
             mainActivityViewModel.videoCategoryItem = videoCategoryItem
 
             mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
+
+            videoCategoryId = videoCategoryItem.id
         }
 
         close()
