@@ -1,10 +1,8 @@
 package com.rahulografy.yapodyt.ui.main.searchfilter
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.rahulografy.yapodyt.BR
@@ -36,17 +34,15 @@ class SearchFiltersFragment :
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        setHasOptionsMenu(false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_close, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) close()
+        when (item.itemId) {
+            R.id.menu_action_close -> close()
+        }
         return super.onOptionsItemSelected(item)
     }
 

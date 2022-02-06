@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +23,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:background="@color/colorPrimary"
-                    app:navigationIcon="@drawable/ic_close"
                     app:title="@string/video_player_title"
                     app:titleCentered="true"
                     app:titleTextColor="@color/default_text_color_white" />
@@ -34,8 +34,158 @@
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtube_player_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_medium" />
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_image_view_video_channel"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:padding="@dimen/space_tiny"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_video_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_normal"
+                android:ellipsize="end"
+                android:fontFamily="@font/sans_bold"
+                android:lineSpacingExtra="4dp"
+                android:maxLines="2"
+                android:textColor="@color/default_text_color_1"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/circle_image_view_video_channel"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Video Title Video Title Video Title Video Title Video Title Video Title Video Title Video Title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_video_channel_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_small"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/default_text_color_2"
+                android:textSize="@dimen/text_tiny"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_video_title"
+                app:layout_constraintStart_toStartOf="@+id/text_view_video_title"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_video_title"
+                tools:ignore="TextContrastCheck"
+                tools:text="Channel Name" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_video_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_small"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_video_channel_name">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_video_likes"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/space_tiny"
+                    android:src="@drawable/ic_thumb_up"
+                    app:layout_constraintEnd_toStartOf="@+id/image_view_video_views"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_video_likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/default_text_color_1"
+                    android:textSize="@dimen/text_tiny"
+                    app:layout_constraintEnd_toEndOf="@+id/image_view_video_likes"
+                    app:layout_constraintStart_toStartOf="@+id/image_view_video_likes"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view_video_likes"
+                    tools:text="2K" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_video_views"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/space_tiny"
+                    android:src="@drawable/ic_eye"
+                    app:layout_constraintEnd_toStartOf="@+id/image_view_video_comments"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_video_likes"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_video_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/default_text_color_1"
+                    android:textSize="@dimen/text_tiny"
+                    app:layout_constraintEnd_toEndOf="@+id/image_view_video_views"
+                    app:layout_constraintStart_toStartOf="@+id/image_view_video_views"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view_video_views"
+                    tools:text="40K" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_view_video_comments"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="@dimen/space_tiny"
+                    android:src="@drawable/ic_comments"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_video_views"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_video_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/default_text_color_1"
+                    android:textSize="@dimen/text_tiny"
+                    app:layout_constraintEnd_toEndOf="@+id/image_view_video_comments"
+                    app:layout_constraintStart_toStartOf="@+id/image_view_video_comments"
+                    app:layout_constraintTop_toBottomOf="@+id/image_view_video_comments"
+                    tools:text="102" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_video_description_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginTop="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_normal"
+                android:text="@string/description"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintTop_toBottomOf="@+id/layout_video_stats" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_video_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginTop="@dimen/space_small"
+                android:layout_marginEnd="@dimen/space_normal"
+                android:layout_marginBottom="@dimen/space_normal"
+                android:autoLink="all"
+                android:lineSpacingExtra="2dp"
+                android:linksClickable="true"
+                android:scrollbars="vertical"
+                android:textColor="@color/default_text_color_2"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_video_description_title"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@string/lorem_ipsum_large_2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

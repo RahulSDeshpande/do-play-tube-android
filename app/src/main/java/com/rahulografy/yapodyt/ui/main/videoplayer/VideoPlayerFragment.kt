@@ -1,5 +1,8 @@
 package com.rahulografy.yapodyt.ui.main.videoplayer
 
+import android.text.method.ScrollingMovementMethod
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -11,6 +14,7 @@ import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.databinding.FragmentVideoPlayerBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseDialogFragment
 import com.rahulografy.yapodyt.ui.main.activity.MainActivityViewModel
+import com.rahulografy.yapodyt.util.ext.isNotNullOrBlank
 import com.rahulografy.yapodyt.util.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,9 +22,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class VideoPlayerFragment :
     BaseDialogFragment<FragmentVideoPlayerBinding, VideoPlayerFragmentViewModel>() {
 
-    private var youTubeVideoId = ""
-
     override val layoutRes get() = R.layout.fragment_video_player
+
+    override val toolbarId get() = R.id.toolbar_video_player
 
     override val bindingVariable = BR.viewModel
 
@@ -28,8 +32,15 @@ class VideoPlayerFragment :
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_close, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) close()
+        when (item.itemId) {
+            R.id.menu_action_close -> close()
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -38,19 +49,21 @@ class VideoPlayerFragment :
         getVideoInfo()
 
         initYouTubeVideoPlayer()
+
+        initVideoInfo()
     }
 
     private fun getVideoInfo() {
 
-        val videoItem = mainActivityViewModel.selectedVideoItem
+        vm.videoItem = mainActivityViewModel.selectedVideoItem
 
-        if (videoItem != null) {
-            vdb.toolbarVideoPlayer.title = videoItem.snippet.channelTitle
+        if (vm.videoItem != null) {
+            vdb.toolbarVideoPlayer.title = vm.videoItem?.snippet?.channelTitle
 
-            val videoId = videoItem.id
+            val videoId = vm.videoItem?.id
 
-            if (videoId.isNotBlank()) {
-                youTubeVideoId = videoId
+            if (videoId.isNotNullOrBlank()) {
+                vm.youTubeVideoId = videoId
             } else {
                 showVideoError()
             }
@@ -74,10 +87,28 @@ class VideoPlayerFragment :
                     }
 
                     override fun onReady(youTubePlayer: YouTubePlayer) {
-                        youTubePlayer.loadVideo(youTubeVideoId, 0f)
+                        youTubePlayer.loadVideo(
+                            videoId = vm.youTubeVideoId.toString(),
+                            startSeconds = 0f
+                        )
                     }
                 }
             )
+        }
+    }
+
+    private fun initVideoInfo() {
+        vdb.apply {
+
+            textViewVideoTitle.text = vm.videoItem?.snippet?.title
+            textViewVideoChannelName.text = vm.videoItem?.snippet?.channelTitle
+
+            textViewVideoLikes.text = vm.videoItem?.statistics?.likeCount
+            textViewVideoViews.text = vm.videoItem?.statistics?.viewCount
+            textViewVideoComments.text = vm.videoItem?.statistics?.commentCount
+
+            textViewVideoDescription.text = vm.videoItem?.snippet?.description
+            textViewVideoDescription.movementMethod = ScrollingMovementMethod()
         }
     }
 

@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -151,7 +152,10 @@ class VideosFragment :
 
                             override fun loadMoreItems() {
                                 vm.isLoading = true
-                                toast(getString(R.string.loading_more_data))
+                                toast(
+                                    text = getString(R.string.loading_more_data),
+                                    duration = Toast.LENGTH_SHORT
+                                )
                                 vm.getVideos(videoCategoryId = getVideoCategoryId())
                             }
 

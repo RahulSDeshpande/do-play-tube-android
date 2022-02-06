@@ -91,7 +91,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
     private fun initToolBar() {
         if (toolbarId != 0 && view != null) {
             getSupportActionBar(requireView().findViewById(toolbarId))
-            // setHasOptionsMenu(true)
+            setHasOptionsMenu(true)
         }
     }
 

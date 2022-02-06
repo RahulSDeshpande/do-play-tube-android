@@ -41,7 +41,6 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.6"
                     android:background="@color/colorPrimary"
-                    android:elevation="4dp"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="2"
