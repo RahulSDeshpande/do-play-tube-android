@@ -6,7 +6,10 @@ import retrofit2.Response
 
 interface YouTubeVideosRemoteDataSource {
 
-    suspend fun getMostPopularVideos(): Response<YouTubeVideosResponse>
+    suspend fun getMostPopularVideos(
+        videoCategoryId: String? = null,
+        nextPageToken: String? = null
+    ): Response<YouTubeVideosResponse>
 
     suspend fun getVideoCategories(): Response<YouTubeVideoCategoriesResponse>
 }

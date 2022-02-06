@@ -8,8 +8,13 @@ class YouTubeVideosRemoteDataSourceImpl
     private val youTubeApiService: YouTubeApiService
 ) : YouTubeVideosRemoteDataSource {
 
-    override suspend fun getMostPopularVideos() =
-        youTubeApiService.getMostPopularVideos()
+    override suspend fun getMostPopularVideos(
+        videoCategoryId: String?,
+        nextPageToken: String?
+    ) = youTubeApiService.getMostPopularVideos(
+        videoCategoryId = videoCategoryId,
+        pageToken = nextPageToken
+    )
 
     override suspend fun getVideoCategories() =
         youTubeApiService.getVideoCategories()

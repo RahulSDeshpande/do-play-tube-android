@@ -16,9 +16,10 @@ class MainActivityViewModel
     private val videosRepository: YouTubeVideosRepository
 ) : BaseViewModel() {
 
-    var videoCategoryItems: List<VideoCategoryItem>? = listOf()
+    var videoCategoryItems = SingleLiveEvent<List<VideoCategoryItem>>()
 
-    var selectedVideoCategoryItem = SingleLiveEvent<VideoCategoryItem>()
+    var videoCategoryItem: VideoCategoryItem? = null
+    var videoCategoryItemUpdated = SingleLiveEvent<Boolean>()
 
     var selectedVideoItem: VideoItem? = null
 
@@ -26,18 +27,21 @@ class MainActivityViewModel
         force: Boolean = false,
         showLoader: Boolean = true
     ) {
-        if (force || videoCategoryItems.isNullOrEmpty()) {
+        if (force || videoCategoryItems.value.isNullOrEmpty()) {
 
             viewModelScope.launch {
                 val response = videosRepository.getVideoCategories()
 
                 if (response.isSuccessful) {
-                    videoCategoryItems =
-                        if (response.body() != null &&
-                            response.body()?.items.isNullOrEmpty().not()
-                        ) {
-                            response.body()?.items
-                        } else mutableListOf()
+                    val items = response.body()?.items
+                    videoCategoryItems.postValue(
+                        if (response.body() != null && items.isNullOrEmpty().not()) {
+                            videoCategoryItem = items?.first()
+                            items
+                        } else listOf()
+                    )
+                } else {
+                    videoCategoryItems.postValue(listOf())
                 }
             }
         }

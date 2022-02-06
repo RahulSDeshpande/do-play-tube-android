@@ -84,13 +84,13 @@ class SearchFiltersFragment :
             // mainActivityViewModel.selectedVideoCategoryItem =
         }*/
 
-        if (mainActivityViewModel.videoCategoryItems.isNotNullOrEmpty()) {
+        if (mainActivityViewModel.videoCategoryItems.value.isNotNullOrEmpty()) {
             searchFiltersAdapter = SearchFiltersAdapter(videoCategoryListListener = this)
 
             vdb.recyclerViewSearchFilters.adapter = searchFiltersAdapter
             vdb.recyclerViewSearchFilters.list()
 
-            searchFiltersAdapter.submitList(mainActivityViewModel.videoCategoryItems)
+            searchFiltersAdapter.submitList(mainActivityViewModel.videoCategoryItems.value)
         }
     }
 
@@ -98,9 +98,14 @@ class SearchFiltersFragment :
         listPosition: Int,
         videoCategoryItem: VideoCategoryItem
     ) {
-        mainActivityViewModel.videoCategoryItems?.forEach {
+        mainActivityViewModel.videoCategoryItems.value?.forEach {
             it.isChecked = it.id == videoCategoryItem.id
         }
-        mainActivityViewModel.selectedVideoCategoryItem.postValue(videoCategoryItem)
+
+        mainActivityViewModel.videoCategoryItem = videoCategoryItem
+
+        mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
+
+        close()
     }
 }

@@ -29,7 +29,7 @@
             android:fontFamily="@font/sans_regular"
             android:gravity="center"
             android:lineSpacingExtra="8dp"
-            android:text="@string/msg_no_data"
+            android:text="@string/msg_no_videos"
             android:textColor="@color/default_text_color_0"
             android:textSize="@dimen/text_large" />
 

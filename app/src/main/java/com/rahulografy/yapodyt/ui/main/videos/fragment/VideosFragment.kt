@@ -16,6 +16,7 @@ import com.rahulografy.yapodyt.ui.main.searchfilter.SearchFiltersFragment
 import com.rahulografy.yapodyt.ui.main.videoplayer.VideoPlayerFragment
 import com.rahulografy.yapodyt.ui.main.videos.adapter.VideosAdapter
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoListListener
+import com.rahulografy.yapodyt.util.ext.isNotNullOrEmpty
 import com.rahulografy.yapodyt.util.ext.list
 import com.rahulografy.yapodyt.util.ext.show
 import com.rahulografy.yapodyt.util.ext.toast
@@ -61,23 +62,71 @@ class VideosFragment :
     }
 
     override fun initUi() {
-
-        vm.getVideos(force = true)
+        getVideos()
+        initSwipeRefreshLayout()
     }
 
     override fun initObservers() {
-        vm.apply {
-            videoItems
-                .observe(
-                    lifecycleOwner = this@VideosFragment,
-                    observer = { videoItems ->
-                        initVideosRecyclerView(videoItems = videoItems)
+
+        mainActivityViewModel
+            .videoCategoryItems
+            .observe(
+                lifecycleOwner = this,
+                observer = { videoCategoryItems ->
+                    if (videoCategoryItems.isNotNullOrEmpty()) {
+                        vm.getVideos(
+                            force = true,
+                            videoCategoryId = getVideoCategoryId()
+                        )
+                    } else {
+                        toast(getString(R.string.msg_no_video_categories))
                     }
-                )
+                }
+            )
+
+        mainActivityViewModel
+            .videoCategoryItemUpdated
+            .observe(
+                lifecycleOwner = this,
+                observer = {
+                    vm.getVideos(
+                        force = true,
+                        videoCategoryId = getVideoCategoryId()
+                    )
+                }
+            )
+
+        vm.videoItems
+            .observe(
+                lifecycleOwner = this,
+                observer = { videoItems ->
+                    initVideosRecyclerView(videoItems = videoItems)
+                }
+            )
+    }
+
+    private fun getVideos() {
+
+        if (mainActivityViewModel.videoCategoryItems.value.isNullOrEmpty() ||
+            mainActivityViewModel.videoCategoryItem == null
+        ) {
+            vm.isDataLoading.set(true)
+            mainActivityViewModel.getVideoCategories()
+        } else {
+            vm.getVideos(videoCategoryId = getVideoCategoryId())
+        }
+    }
+
+    private fun getVideoCategoryId() = mainActivityViewModel.videoCategoryItem?.id
+
+    private fun initSwipeRefreshLayout() {
+        vdb.swipeRefreshLayoutVideos.setOnRefreshListener {
+            getVideos()
         }
     }
 
     private fun initVideosRecyclerView(videoItems: List<VideoItem>?) {
+
         if (videoItems.isNullOrEmpty().not()) {
             videosAdapter = VideosAdapter(videoListListener = this)
             vdb.recyclerViewVideos.adapter = videosAdapter

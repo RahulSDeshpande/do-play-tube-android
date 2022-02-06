@@ -30,13 +30,12 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         }
 
         super.observe(
-            lifecycleOwner,
-            Observer<T> { t ->
-                if (pending.compareAndSet(true, false)) {
-                    observer.onChanged(t)
-                }
+            lifecycleOwner
+        ) { t ->
+            if (pending.compareAndSet(true, false)) {
+                observer.onChanged(t)
             }
-        )
+        }
     }
 
     @MainThread

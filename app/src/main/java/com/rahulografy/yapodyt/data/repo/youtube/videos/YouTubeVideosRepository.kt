@@ -7,8 +7,13 @@ class YouTubeVideosRepository @Inject constructor(
     private val youTubeVideosRemoteDataSource: YouTubeVideosRemoteDataSource,
 ) : YouTubeVideosRemoteDataSource {
 
-    override suspend fun getMostPopularVideos() =
-        youTubeVideosRemoteDataSource.getMostPopularVideos()
+    override suspend fun getMostPopularVideos(
+        videoCategoryId: String?,
+        nextPageToken: String?
+    ) = youTubeVideosRemoteDataSource.getMostPopularVideos(
+        videoCategoryId = videoCategoryId,
+        nextPageToken = nextPageToken
+    )
 
     override suspend fun getVideoCategories() =
         youTubeVideosRemoteDataSource.getVideoCategories()

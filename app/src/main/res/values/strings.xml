@@ -8,7 +8,8 @@
     <string name="msg_fetching_data_please_wait">Data is being fetched, please wait…</string>
     <string name="msg_no_internet">Your device is offline.\nPlease connect to the internet.</string>
     <string name="msg_yes_internet">Your device is now online.</string>
-    <string name="msg_no_data">No videos found.\nPlease pull to refresh.</string>
+    <string name="msg_no_videos">No videos found.\nPull to refresh to try again.</string>
+    <string name="msg_no_video_categories">No video categories found.\nPull to refresh to try again.</string>
     <string name="msg_no_internet_1">Oops, no active internet connection.</string>
     <string name="msg_airplane_mode_is_turned_on">You have turned on the airplane mode.</string>
 

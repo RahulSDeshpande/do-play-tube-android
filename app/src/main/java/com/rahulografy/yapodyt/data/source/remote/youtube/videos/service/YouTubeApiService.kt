@@ -18,6 +18,7 @@ interface YouTubeApiService {
         @Query("regionCode") regionCode: String = REGION_CODE,
         @Query("order") order: String = "date",
         @Query("maxResults") maxResults: Int = MAX_RESULTS_PER_PAGE,
+        @Query("videoCategoryId") videoCategoryId: String? = null,
         @Query("pageToken") pageToken: String? = null,
         @Query("key") key: String = YT_API_KEY
     ): Response<YouTubeVideosResponse>
