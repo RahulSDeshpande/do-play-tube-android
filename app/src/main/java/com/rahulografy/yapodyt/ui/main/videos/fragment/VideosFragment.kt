@@ -1,9 +1,6 @@
 package com.rahulografy.yapodyt.ui.main.videos.fragment
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -34,33 +31,30 @@ class VideosFragment :
 
     override val layoutRes get() = R.layout.fragment_videos
 
-    override val toolbarId: Int get() = R.id.toolbar_videos
-
     override val bindingVariable = BR.viewModel
 
     override val vm: VideosFragmentViewModel by viewModels()
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_videos, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (vm.isDataLoading.get()) {
-            toast(getString(R.string.msg_fetching_data_please_wait))
-        } else {
-            when (item.itemId) {
-                R.id.menu_action_filter -> openSearchFiltersFragment()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
+        initToolbar()
+    }
+
+    private fun initToolbar() {
+        vdb.toolbarVideos.apply {
+            inflateMenu(R.menu.menu_videos)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_action_filter -> {
+                        openSearchFiltersFragment()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
     }
 
     override fun initUi() {

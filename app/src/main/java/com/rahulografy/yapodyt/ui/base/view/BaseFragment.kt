@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -28,9 +24,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
 
     @get:LayoutRes
     protected abstract val layoutRes: Int
-
-    @get:IdRes
-    protected open val toolbarId: Int = 0
 
     abstract val bindingVariable: Int
 
@@ -64,8 +57,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
 
         vm.start()
 
-        initToolBar()
-
         initUi()
 
         initSharedViewModels()
@@ -86,19 +77,6 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
     override fun onDestroyView() {
         vm.stop()
         super.onDestroyView()
-    }
-
-    private fun initToolBar() {
-        if (toolbarId != 0 && view != null) {
-            getSupportActionBar(requireView().findViewById(toolbarId))
-            setHasOptionsMenu(true)
-        }
-    }
-
-    private fun getSupportActionBar(toolbar: Toolbar): ActionBar? {
-        val activity = (activity as AppCompatActivity)
-        activity.setSupportActionBar(toolbar)
-        return activity.supportActionBar
     }
 
     abstract fun initUi()

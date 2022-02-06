@@ -1,9 +1,8 @@
 package com.rahulografy.yapodyt.ui.main.videoplayer
 
+import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
@@ -24,24 +23,30 @@ class VideoPlayerFragment :
 
     override val layoutRes get() = R.layout.fragment_video_player
 
-    override val toolbarId get() = R.id.toolbar_video_player
-
     override val bindingVariable = BR.viewModel
 
     override val vm: VideoPlayerFragmentViewModel by viewModels()
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_close, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_action_close -> close()
+    private fun initToolbar() {
+        vdb.toolbarVideoPlayer.apply {
+            inflateMenu(R.menu.menu_close)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_action_close -> {
+                        close()
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun initUi() {

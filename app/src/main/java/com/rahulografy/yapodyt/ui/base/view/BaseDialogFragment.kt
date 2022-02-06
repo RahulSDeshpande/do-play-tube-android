@@ -5,11 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
@@ -28,10 +24,12 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
     @get:LayoutRes
     protected abstract val layoutRes: Int
 
-    @get:IdRes
-    protected open val toolbarId: Int = 0
-
     abstract val bindingVariable: Int
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)
@@ -66,26 +64,11 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
 
         vm.start()
 
-        initToolBar()
-
         initUi()
 
         initSharedViewModels()
 
         initObservers()
-    }
-
-    private fun initToolBar() {
-        if (toolbarId != 0 && view != null) {
-            getSupportActionBar(requireView().findViewById(toolbarId))
-            setHasOptionsMenu(true)
-        }
-    }
-
-    private fun getSupportActionBar(toolbar: Toolbar): ActionBar? {
-        val activity = (activity as AppCompatActivity)
-        activity.setSupportActionBar(toolbar)
-        return activity.supportActionBar
     }
 
     abstract fun initUi()
