@@ -1,10 +1,7 @@
 package com.rahulografy.yapodyt.ui.main.searchfilter
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.rahulografy.yapodyt.BR
@@ -28,26 +25,30 @@ class SearchFiltersFragment :
 
     override val layoutRes get() = R.layout.fragment_search_filters
 
-    override val toolbarId get() = R.id.toolbar_search_filters
-
     override val bindingVariable = BR.viewModel
 
     override val vm: SearchFiltersFragmentViewModel by viewModels()
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        setHasOptionsMenu(false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) close()
-        return super.onOptionsItemSelected(item)
+    private fun initToolbar() {
+        vdb.toolbarSearchFilters.apply {
+            inflateMenu(R.menu.menu_close)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_action_close -> {
+                        close()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
     }
 
     override fun initUi() {
@@ -70,13 +71,15 @@ class SearchFiltersFragment :
         listPosition: Int,
         videoCategoryItem: VideoCategoryItem
     ) {
-        mainActivityViewModel.videoCategoryItems.value?.forEach {
-            it.isChecked = it.id == videoCategoryItem.id
+        if (mainActivityViewModel.videoCategoryItem?.id != videoCategoryItem.id) {
+            mainActivityViewModel.videoCategoryItems.value?.forEach {
+                it.isChecked = it.id == videoCategoryItem.id
+            }
+
+            mainActivityViewModel.videoCategoryItem = videoCategoryItem
+
+            mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
         }
-
-        mainActivityViewModel.videoCategoryItem = videoCategoryItem
-
-        mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
 
         close()
     }

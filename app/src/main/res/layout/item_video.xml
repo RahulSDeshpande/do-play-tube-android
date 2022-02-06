@@ -13,7 +13,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_video_thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="260dp"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher_round_grey" />
@@ -50,13 +50,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_small"
             android:layout_marginEnd="@dimen/space_normal"
-            android:layout_marginBottom="@dimen/space_normal"
             android:ellipsize="end"
             android:fontFamily="@font/sans_bold"
             android:lineSpacingExtra="4dp"
             android:maxLines="2"
             android:textColor="@color/default_text_color_1"
-            android:textSize="@dimen/text_medium"
+            android:textSize="@dimen/text_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/circle_image_view_video_channel"
             app:layout_constraintTop_toBottomOf="@+id/image_view_video_thumbnail"
