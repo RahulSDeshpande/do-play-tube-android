@@ -2,6 +2,7 @@ package com.rahulografy.yapodyt.ui.main.activity
 
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.rahulografy.yapodyt.BR
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.databinding.ActivityHomeBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseActivity
@@ -12,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_home.*
 class MainActivity : BaseActivity<ActivityHomeBinding, MainActivityViewModel>() {
 
     override val layoutRes: Int get() = R.layout.activity_home
+
+    override val bindingVariable = BR.viewModel
 
     override val vm: MainActivityViewModel by viewModels()
 

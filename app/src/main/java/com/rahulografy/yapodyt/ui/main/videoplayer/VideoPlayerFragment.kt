@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.rahulografy.yapodyt.BR
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.databinding.FragmentVideoPlayerBinding
 import com.rahulografy.yapodyt.ui.base.view.BaseDialogFragment
@@ -20,6 +21,8 @@ class VideoPlayerFragment :
     private var youTubeVideoId = ""
 
     override val layoutRes get() = R.layout.fragment_video_player
+
+    override val bindingVariable = BR.viewModel
 
     override val vm: VideoPlayerFragmentViewModel by viewModels()
 

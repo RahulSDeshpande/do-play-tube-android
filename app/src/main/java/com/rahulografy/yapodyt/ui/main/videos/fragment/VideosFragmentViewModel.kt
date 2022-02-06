@@ -58,9 +58,7 @@ class VideosFragmentViewModel
                 isDataLoading.set(false)
             }
         } else {
-            if (showLoader) {
-                isDataLoading.set(false)
-            }
+            isDataLoading.set(false)
         }
     }
 }

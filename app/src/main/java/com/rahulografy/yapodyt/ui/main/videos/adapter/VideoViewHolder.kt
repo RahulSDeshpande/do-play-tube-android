@@ -5,6 +5,7 @@ import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.ItemVideoBinding
 import com.rahulografy.yapodyt.ui.main.videos.listener.VideoListListener
+import com.rahulografy.yapodyt.util.ext.duration
 import com.squareup.picasso.Picasso
 
 class VideoViewHolder(
@@ -23,7 +24,7 @@ class VideoViewHolder(
                 .placeholder(R.drawable.ic_launcher_foreground_grey)
                 .into(imageViewVideoThumbnail)
 
-            textViewVideoDuration.text = videoItem.contentDetails.duration
+            textViewVideoDuration.text = videoItem.contentDetails.duration.duration()
 
             textViewVideoTitle.text = videoItem.snippet.title
 

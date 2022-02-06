@@ -31,6 +31,8 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
     @get:IdRes
     protected open val toolbarId: Int = 0
 
+    abstract val bindingVariable: Int
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)
 
@@ -54,6 +56,10 @@ abstract class BaseDialogFragment<VDB : ViewDataBinding, BVM : BaseViewModel> :
         super.onViewCreated(view, savedInstanceState)
 
         vdb.apply {
+            setVariable(
+                bindingVariable,
+                vm
+            )
             lifecycleOwner = this@BaseDialogFragment
             executePendingBindings()
         }

@@ -20,6 +20,8 @@ abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
 
     protected abstract val vm: BVM
 
+    abstract val bindingVariable: Int
+
     private var noInternetSnackbar: NoInternetSnackbar? = null
 
     @get:LayoutRes
@@ -32,6 +34,10 @@ abstract class BaseActivity<VDB : ViewDataBinding, BVM : BaseViewModel> :
         vdb = DataBindingUtil.setContentView(this, layoutRes)
 
         vdb.apply {
+            setVariable(
+                bindingVariable,
+                vm
+            )
             lifecycleOwner = this@BaseActivity
             executePendingBindings()
         }

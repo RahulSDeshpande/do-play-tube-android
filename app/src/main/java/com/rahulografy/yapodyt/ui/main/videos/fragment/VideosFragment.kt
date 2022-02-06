@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.rahulografy.yapodyt.BR
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
@@ -35,6 +36,8 @@ class VideosFragment :
 
     override val toolbarId: Int get() = R.id.toolbar_videos
 
+    override val bindingVariable = BR.viewModel
+
     override val vm: VideosFragmentViewModel by viewModels()
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
@@ -57,7 +60,6 @@ class VideosFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setHasOptionsMenu(true)
     }
 
@@ -74,6 +76,7 @@ class VideosFragment :
                 lifecycleOwner = this,
                 observer = { videoCategoryItems ->
                     if (videoCategoryItems.isNotNullOrEmpty()) {
+                        updateCategoryHeader()
                         vm.getVideos(
                             force = true,
                             videoCategoryId = getVideoCategoryId()
@@ -89,6 +92,7 @@ class VideosFragment :
             .observe(
                 lifecycleOwner = this,
                 observer = {
+                    updateCategoryHeader()
                     vm.getVideos(
                         force = true,
                         videoCategoryId = getVideoCategoryId()
@@ -105,6 +109,11 @@ class VideosFragment :
             )
     }
 
+    private fun updateCategoryHeader() {
+        vdb.textViewVideosCategory.text =
+            mainActivityViewModel.videoCategoryItem?.snippet?.title
+    }
+
     private fun getVideos() {
 
         if (mainActivityViewModel.videoCategoryItems.value.isNullOrEmpty() ||
@@ -113,7 +122,10 @@ class VideosFragment :
             vm.isDataLoading.set(true)
             mainActivityViewModel.getVideoCategories()
         } else {
-            vm.getVideos(videoCategoryId = getVideoCategoryId())
+            vm.getVideos(
+                force = true,
+                videoCategoryId = getVideoCategoryId()
+            )
         }
     }
 
