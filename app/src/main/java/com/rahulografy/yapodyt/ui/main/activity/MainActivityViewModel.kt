@@ -38,25 +38,37 @@ class MainActivityViewModel
                     val items = response.body()?.items
 
                     videoCategoryItems.postValue(
-                        if (response.body() != null && items.isNullOrEmpty().not()) {
-
-                            if (videoCategoryId.isNotNullOrBlank()) {
-                                val item = items?.find { it.id == videoCategoryId }
-                                item?.isChecked = true
-                                videoCategoryItem = item
-                            } else {
-                                items?.first()?.isChecked = true
-                                videoCategoryItem = items?.first()
-                                videoCategoryId = videoCategoryItem?.id
-                            }
-
-                            items?.first()?.isChecked = true
-
-                            items
+                        if (items.isNullOrEmpty().not()) {
+                            checkAndUpdateVideoCategory(items)
                         } else listOf()
                     )
                 } else videoCategoryItems.postValue(listOf())
             }
         }
+    }
+
+    private fun checkAndUpdateVideoCategory(
+        items: List<VideoCategoryItem>?
+    ): List<VideoCategoryItem>? {
+
+        if (videoCategoryId.isNotNullOrBlank()) {
+            items?.forEach { item ->
+                item.isChecked = item.id == videoCategoryId
+                if (item.id == videoCategoryId) {
+                    item.isChecked = true
+                    videoCategoryItem = item
+                }
+            }
+
+            val item = items?.find { it.id == videoCategoryId }
+            item?.isChecked = true
+            videoCategoryItem = item
+        } else {
+            items?.first()?.isChecked = true
+            videoCategoryItem = items?.first()
+            videoCategoryId = videoCategoryItem?.id
+        }
+
+        return items
     }
 }

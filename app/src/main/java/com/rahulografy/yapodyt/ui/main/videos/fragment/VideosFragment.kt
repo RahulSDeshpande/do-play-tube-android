@@ -70,10 +70,14 @@ class VideosFragment :
                 lifecycleOwner = this,
                 observer = { videoCategoryItems ->
                     if (videoCategoryItems.isNotNullOrEmpty()) {
-                        updateCategoryHeader()
-                        vm.getVideos(
-                            videoCategoryId = getVideoCategoryId()
+                        toast(
+                            getString(
+                                R.string.showing_videos_for_category,
+                                mainActivityViewModel.videoCategoryItem?.snippet?.title
+                            )
                         )
+                        updateCategoryHeader()
+                        vm.getVideos(videoCategoryId = getVideoCategoryId())
                     } else {
                         toast(getString(R.string.msg_no_video_categories))
                     }
