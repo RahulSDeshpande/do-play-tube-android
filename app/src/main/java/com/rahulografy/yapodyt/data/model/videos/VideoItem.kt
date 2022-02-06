@@ -6,4 +6,5 @@ data class VideoItem(
     val kind: String,
     val snippet: Snippet,
     val contentDetails: ContentDetails,
+    val statistics: Statistics
 )
