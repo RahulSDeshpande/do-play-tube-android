@@ -34,8 +34,6 @@ fun String.duration(): String {
         if (sec == 0L) "00"
         else String.format("%02d", sec)
 
-    println(finalTime)
-
     return finalTime
 }
 

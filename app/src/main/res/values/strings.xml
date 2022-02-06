@@ -46,5 +46,7 @@
     <string name="videos_search_filter_category_gaming">Gaming</string>
     <string name="videos_search_filter_category_pets_and_animals">Pets &amp; Animals</string>
     <string name="videos_search_filter_category_film_and_animation">Film &amp; Animation</string>
+    <string name="loading_more_data">Loading more data..</string>
+    <string name="error_occurred_while_loading_video">Error occurred while loading this Youtube video, please try again.</string>
 
 </resources>

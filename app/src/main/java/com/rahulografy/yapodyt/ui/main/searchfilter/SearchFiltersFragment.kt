@@ -70,13 +70,15 @@ class SearchFiltersFragment :
         listPosition: Int,
         videoCategoryItem: VideoCategoryItem
     ) {
-        mainActivityViewModel.videoCategoryItems.value?.forEach {
-            it.isChecked = it.id == videoCategoryItem.id
+        if (mainActivityViewModel.videoCategoryItem?.id != videoCategoryItem.id) {
+            mainActivityViewModel.videoCategoryItems.value?.forEach {
+                it.isChecked = it.id == videoCategoryItem.id
+            }
+
+            mainActivityViewModel.videoCategoryItem = videoCategoryItem
+
+            mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
         }
-
-        mainActivityViewModel.videoCategoryItem = videoCategoryItem
-
-        mainActivityViewModel.videoCategoryItemUpdated.postValue(true)
 
         close()
     }

@@ -7,7 +7,7 @@ object Constants {
         object Api {
             const val URL_BASE = "https://www.googleapis.com/"
 
-            const val REGION_CODE = "IN"
+            const val REGION_CODE = "GB"
             const val MAX_RESULTS_PER_PAGE = 10
         }
 

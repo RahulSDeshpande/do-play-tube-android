@@ -34,7 +34,6 @@ abstract class PaginationListener(
     abstract val isLoading: Boolean
 
     companion object {
-        const val PAGE_START = 1
         private const val PAGE_SIZE = MAX_RESULTS_PER_PAGE
     }
 }

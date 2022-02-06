@@ -60,7 +60,8 @@ class VideoPlayerFragment :
     private fun initYouTubeVideoPlayer() {
 
         vdb.youtubePlayerView.apply {
-            lifecycle.addObserver(vdb.youtubePlayerView)
+
+            lifecycle.addObserver(this)
 
             addYouTubePlayerListener(
                 object : AbstractYouTubePlayerListener() {
@@ -81,6 +82,6 @@ class VideoPlayerFragment :
     }
 
     private fun showVideoError() {
-        toast("Error occurred while loading this Youtube video, please try again.")
+        toast(getString(R.string.error_occurred_while_loading_video))
     }
 }

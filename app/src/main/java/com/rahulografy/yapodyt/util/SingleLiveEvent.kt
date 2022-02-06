@@ -45,6 +45,11 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     }
 
     @MainThread
+    fun emit() {
+        value = this.value
+    }
+
+    @MainThread
     fun reset() {
         value = null
     }

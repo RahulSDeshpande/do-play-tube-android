@@ -22,7 +22,7 @@
                     android:id="@+id/toolbar_search_filters"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorAccent"
                     app:navigationIcon="@drawable/ic_close"
                     app:title="@string/search_filter_title"
                     app:titleCentered="true"
