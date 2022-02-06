@@ -18,7 +18,9 @@ class MainActivity : BaseActivity<ActivityHomeBinding, MainActivityViewModel>() 
 
     override val vm: MainActivityViewModel by viewModels()
 
-    override fun initUi() {}
+    override fun initUi() {
+        var sas = 2
+    }
 
     fun showSnackbar(message: String) {
         Snackbar
