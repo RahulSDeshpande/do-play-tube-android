@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.rahulografy.yapodyt.BR
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videos.VideoItem
 import com.rahulografy.yapodyt.databinding.FragmentVideosBinding
@@ -34,6 +35,8 @@ class VideosFragment :
     override val layoutRes get() = R.layout.fragment_videos
 
     override val toolbarId: Int get() = R.id.toolbar_videos
+
+    override val bindingVariable = BR.viewModel
 
     override val vm: VideosFragmentViewModel by viewModels()
 
@@ -113,7 +116,10 @@ class VideosFragment :
             vm.isDataLoading.set(true)
             mainActivityViewModel.getVideoCategories()
         } else {
-            vm.getVideos(videoCategoryId = getVideoCategoryId())
+            vm.getVideos(
+                force = true,
+                videoCategoryId = getVideoCategoryId()
+            )
         }
     }
 

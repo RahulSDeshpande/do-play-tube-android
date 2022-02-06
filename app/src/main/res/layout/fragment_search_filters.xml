@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.rahulografy.yapodyt.ui.main.videos.fragment.VideosFragmentViewModel" />
-
-    </data>
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,95 +38,6 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true">
-
-            <RadioGroup
-                android:id="@+id/radio_group_search_filters"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:button="@drawable/radio_button_inset"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="0dp"
-                    android:paddingTop="@dimen/space_normal"
-                    android:paddingEnd="@dimen/space_normal"
-                    android:paddingBottom="@dimen/space_normal"
-                    android:text="@string/videos_search_filter_category_music"
-                    android:textSize="@dimen/text_large" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:button="@drawable/radio_button_inset"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="0dp"
-                    android:paddingTop="@dimen/space_normal"
-                    android:paddingEnd="@dimen/space_normal"
-                    android:paddingBottom="@dimen/space_normal"
-                    android:text="@string/videos_search_filter_category_sports"
-                    android:textSize="@dimen/text_large" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:button="@drawable/radio_button_inset"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="0dp"
-                    android:paddingTop="@dimen/space_normal"
-                    android:paddingEnd="@dimen/space_normal"
-                    android:paddingBottom="@dimen/space_normal"
-                    android:text="@string/videos_search_filter_category_gaming"
-                    android:textSize="@dimen/text_large" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:button="@drawable/radio_button_inset"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="0dp"
-                    android:paddingTop="@dimen/space_normal"
-                    android:paddingEnd="@dimen/space_normal"
-                    android:paddingBottom="@dimen/space_normal"
-                    android:text="@string/videos_search_filter_category_pets_and_animals"
-                    android:textSize="@dimen/text_large" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:button="@drawable/radio_button_inset"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:paddingStart="0dp"
-                    android:paddingTop="@dimen/space_normal"
-                    android:paddingEnd="@dimen/space_normal"
-                    android:paddingBottom="@dimen/space_normal"
-                    android:text="@string/videos_search_filter_category_film_and_animation"
-                    android:textSize="@dimen/text_large" />
-
-            </RadioGroup>
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group_search_filters"
-                style="@style/SearchFilterChipGroupStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
-                android:visibility="gone"
-                app:layout_constraintTop_toTopOf="parent"
-                app:singleSelection="true" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_search_filters"

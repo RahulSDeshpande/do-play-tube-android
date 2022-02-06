@@ -32,6 +32,8 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
     @get:IdRes
     protected open val toolbarId: Int = 0
 
+    abstract val bindingVariable: Int
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,6 +54,10 @@ abstract class BaseFragment<VDB : ViewDataBinding, BVM : BaseViewModel> : Fragme
         super.onViewCreated(view, savedInstanceState)
 
         vdb.apply {
+            setVariable(
+                bindingVariable,
+                vm
+            )
             lifecycleOwner = this@BaseFragment
             executePendingBindings()
         }

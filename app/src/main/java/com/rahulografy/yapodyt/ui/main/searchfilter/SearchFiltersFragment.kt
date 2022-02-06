@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.rahulografy.yapodyt.BR
 import com.rahulografy.yapodyt.R
 import com.rahulografy.yapodyt.data.model.videocategories.VideoCategoryItem
 import com.rahulografy.yapodyt.databinding.FragmentSearchFiltersBinding
@@ -28,6 +29,8 @@ class SearchFiltersFragment :
     override val layoutRes get() = R.layout.fragment_search_filters
 
     override val toolbarId get() = R.id.toolbar_search_filters
+
+    override val bindingVariable = BR.viewModel
 
     override val vm: SearchFiltersFragmentViewModel by viewModels()
 
@@ -52,37 +55,6 @@ class SearchFiltersFragment :
     }
 
     private fun initSearchFilterList() {
-
-        /*vdb.radioGroupSearchFilters.apply {
-
-            check(mainActivityViewModel.videoSearchFilterCategoryId)
-
-            setOnCheckedChangeListener { group, checkedId ->
-                toast(group.findViewById<AppCompatRadioButton>(checkedId).text.toString())
-
-                mainActivityViewModel.videoSearchFilterCategoryId = group.checkedRadioButtonId
-                // mainActivityViewModel.videoSearchFilterCategory.postValue()
-            }
-        }*/
-
-        /*mainActivityViewModel.videoCategoryItems?.forEach {
-            vdb.chipGroupSearchFilters.addView(
-                Chip(context).apply {
-                    id = it.id.toInt()
-                    text = it.snippet.title
-                }
-            )
-        }
-
-        vdb.chipGroupSearchFilters.isSelectionRequired = true
-        vdb.chipGroupSearchFilters.isSingleSelection = true
-        vdb.chipGroupSearchFilters.isSingleLine = false
-
-        vdb.chipGroupSearchFilters.setOnCheckedChangeListener { _, checkedId ->
-            toast(checkedId.toString())
-
-            // mainActivityViewModel.selectedVideoCategoryItem =
-        }*/
 
         if (mainActivityViewModel.videoCategoryItems.value.isNotNullOrEmpty()) {
             searchFiltersAdapter = SearchFiltersAdapter(videoCategoryListListener = this)
