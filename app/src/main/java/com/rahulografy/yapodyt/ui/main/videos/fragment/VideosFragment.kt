@@ -77,6 +77,8 @@ class VideosFragment :
                 lifecycleOwner = this,
                 observer = { videoCategoryItems ->
                     if (videoCategoryItems.isNotNullOrEmpty()) {
+                        vdb.textViewVideosCategory.text =
+                            mainActivityViewModel.videoCategoryItem?.snippet?.title
                         vm.getVideos(
                             force = true,
                             videoCategoryId = getVideoCategoryId()

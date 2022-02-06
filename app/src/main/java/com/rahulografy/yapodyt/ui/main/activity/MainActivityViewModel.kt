@@ -23,10 +23,8 @@ class MainActivityViewModel
 
     var selectedVideoItem: VideoItem? = null
 
-    fun getVideoCategories(
-        force: Boolean = false,
-        showLoader: Boolean = true
-    ) {
+    fun getVideoCategories(force: Boolean = false) {
+
         if (force || videoCategoryItems.value.isNullOrEmpty()) {
 
             viewModelScope.launch {
@@ -37,6 +35,7 @@ class MainActivityViewModel
                     videoCategoryItems.postValue(
                         if (response.body() != null && items.isNullOrEmpty().not()) {
                             videoCategoryItem = items?.first()
+                            items?.first()?.isChecked = true
                             items
                         } else listOf()
                     )
