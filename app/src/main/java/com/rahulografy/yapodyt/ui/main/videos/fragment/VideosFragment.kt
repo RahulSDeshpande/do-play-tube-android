@@ -77,8 +77,7 @@ class VideosFragment :
                 lifecycleOwner = this,
                 observer = { videoCategoryItems ->
                     if (videoCategoryItems.isNotNullOrEmpty()) {
-                        vdb.textViewVideosCategory.text =
-                            mainActivityViewModel.videoCategoryItem?.snippet?.title
+                        updateCategoryHeader()
                         vm.getVideos(
                             force = true,
                             videoCategoryId = getVideoCategoryId()
@@ -94,6 +93,7 @@ class VideosFragment :
             .observe(
                 lifecycleOwner = this,
                 observer = {
+                    updateCategoryHeader()
                     vm.getVideos(
                         force = true,
                         videoCategoryId = getVideoCategoryId()
@@ -108,6 +108,11 @@ class VideosFragment :
                     initVideosRecyclerView(videoItems = videoItems)
                 }
             )
+    }
+
+    private fun updateCategoryHeader() {
+        vdb.textViewVideosCategory.text =
+            mainActivityViewModel.videoCategoryItem?.snippet?.title
     }
 
     private fun getVideos() {

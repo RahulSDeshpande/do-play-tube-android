@@ -31,9 +31,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:background="@color/colorPrimary"
+                    app:elevation="0dp"
                     app:title="@string/app_name"
                     app:titleCentered="true"
                     app:titleTextColor="@color/default_text_color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_videos_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:elevation="4dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:padding="@dimen/space_small"
+                    android:textColor="@color/default_text_color_white"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Category Name" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -49,29 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_view_videos_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:elevation="4dp"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/sans_bold"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:paddingBottom="@dimen/space_small"
-                    android:textColor="@color/default_text_color_white"
-                    android:textSize="@dimen/text_small"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Category Name" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_videos"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_view_videos_category"
+                    android:layout_height="match_parent"
                     tools:itemCount="3"
                     tools:listitem="@layout/item_video" />
 
